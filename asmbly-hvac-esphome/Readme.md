@@ -1,3 +1,10 @@
+# HVAC Temp
+
+We've been having trouble with our HVAC system freezing over. This is a simple
+ESPHome based temperature sensor.
+
+## Setup
+
 Broadly following
 https://esphome.io/guides/getting_started_command_line/
 
