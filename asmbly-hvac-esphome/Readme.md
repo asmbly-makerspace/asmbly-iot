@@ -1,7 +1,29 @@
 # HVAC Temp
 
 We've been having trouble with our HVAC system freezing over. This is a simple
-ESPHome based temperature sensor.
+ESPHome based temperature sensor. You can find more color about this here:
+https://yo.asmbly.org/t/saturday-2-14-special-project-at-electronics-office-hours/15289
+
+Here's the basics: we want to measure the temperature at the condenser on our
+HVAC units to make sure it's not freezing over. We want that temperature to
+be available in our HomeAssistant installation so that we can set alerts on it
+or take other actions.
+
+We decided to build a prototype using an Adafruit Feather board because they
+are well supported and documented. We decided to use a thermistor because it
+was a cheap and easy way to measure surface temperature. We decided to use
+ESPHome because it's a very easy way to get data into HomeAssistant.
+
+The result is basically a dev board, a thermistor, a resitor, and a few wires
+It's currently powered over USB.
+
+
+## Next steps
+
+We want several of these. Now that we know the shape of the solution we want,
+we can use a much smaller/cheaper/less powerful microcontroller board, like
+the esp32-c3 Super Mini.
+
 
 ## Setup
 

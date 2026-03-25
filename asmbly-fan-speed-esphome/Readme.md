@@ -10,6 +10,13 @@ The idea is described here https://github.com/albahmed23/terrabloom_ec_fans/tree
 We're using ESPHome and a ESP32-C3 Super Mini board, rather than the
 Arduino they use.
 
+## Next Steps
+
+We plan to mount this and the Polverine air quality sensor in the enclosure
+and power them both from the 10V supplied by the fan, using a buck converter
+to get it down to a voltage that the boards like.
+
+
 ## Setup
 
 Broadly following
@@ -45,4 +52,4 @@ wifi.
 
 At this point, if all has gone well, you should be able to connect to
 Home Assistant and see that a new Esphome device is available. Add it
-and enjoy your data.
+and enjoy your control.
