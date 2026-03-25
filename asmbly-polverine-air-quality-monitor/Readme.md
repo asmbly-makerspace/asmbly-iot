@@ -14,9 +14,9 @@ that I'm not excited about doing that right now.
 I would have loved to use ESPHome for the whole thing, but the support for these
 particular sensors is not included yet. See:
 
-https://github.com/esphome/esphome/pull/13480
-https://gist.github.com/jarz/415874fac81f0e813d6d3ece221c3992
-https://github.com/sweitzja/esphome-bmv080
+* BME690 support https://github.com/esphome/esphome/pull/13480
+* BMV080 support https://github.com/sweitzja/esphome-bmv080
+* ESPHome config that uses the BME690 as a BME688 and ignores the BMV080 https://gist.github.com/jarz/415874fac81f0e813d6d3ece221c3992
 
 When that settles (check again in Summer 2026), we can revisit this if we care.
 
