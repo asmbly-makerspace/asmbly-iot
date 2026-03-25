@@ -1,5 +1,5 @@
 # 3DP Enclosure Fan Speed Controller
-We've want to be able to remotely control the fan speed of the filtration
+We want to be able to remotely control the fan speed of the filtration
 system in the 3DP enclosure (based on air quality measurements). The fan
 expects a PWM signal at 10V with the desired duty cycle corresponding to
 the fan speed.
