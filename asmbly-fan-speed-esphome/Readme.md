@@ -23,17 +23,21 @@ https://esphome.io/guides/getting_started_command_line/
 
 Generating the ESPHome config
 
- # Set up python virtual environment in the venv direcotry
+### Set up python virtual environment in the venv direcotry
+```
  /opt/homebrew/bin/python3 -m venv venv # or just python -m venv venv
  source venv/bin/activate.fish # choose the activate for your shell
  pip install wheel esphome
+```
 
- # Set up the yaml
+### Set up the yaml
+```
  esphome wizard asmbly-fan-speed.yaml
  name: fan-speed-3dp-enclosure
  microcontroller: esp32
  board: esp32-c3-devkitm-1
  wifi: Asmbly
+```
 
 We're just using this for a PWM output, so...
 https://esphome.io/components/output/ledc/
@@ -43,7 +47,9 @@ https://esphome.io/components/fan/speed/
 
 After filling out asmbly-hvac.yaml, plug in the board over USB, and
 
+```
  esphome run asmbly-fan-speed.yaml
+```
 
 Tell it to connect over the serial port. You should see it compile and
 load the code onto the board, then see debugging info as it joins the
