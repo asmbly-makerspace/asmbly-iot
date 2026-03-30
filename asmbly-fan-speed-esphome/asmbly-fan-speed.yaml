@@ -38,3 +38,4 @@ fan:
   - platform: speed
     output: fan_0
     name: "3DP Enclosure Filter Fan"
+    restore_mode: RESTORE_DEFAULT_ON  # if the device is restarted, try to restore the previous setting
