@@ -1,0 +1,117 @@
+alias: 3DP Fan Throttle by Air Quality
+description: ""
+triggers:
+  - trigger: numeric_state
+    entity_id:
+      - sensor.polverine_ba36a0_indoor_air_quality
+    above: 75
+    for:
+      hours: 0
+      minutes: 1
+      seconds: 0
+    id: enclosure-air-polluted
+  - trigger: numeric_state
+    entity_id:
+      - sensor.polverine_ba36a0_indoor_air_quality
+    below: 60
+    for:
+      hours: 0
+      minutes: 5
+      seconds: 0
+    id: enclosure-air-low-moderate
+    above: 50
+  - trigger: numeric_state
+    entity_id:
+      - sensor.polverine_ba36a0_indoor_air_quality
+    below: 75
+    for:
+      hours: 0
+      minutes: 5
+      seconds: 0
+    id: enclosure-air-high-moderate
+    above: 65
+  - trigger: numeric_state
+    entity_id:
+      - sensor.polverine_ba36a0_indoor_air_quality
+    below: 50
+    for:
+      hours: 0
+      minutes: 10
+      seconds: 0
+    id: enclosure-air-clean
+conditions: []
+actions:
+  - choose:
+      - conditions:
+          - condition: trigger
+            id:
+              - enclosure-air-polluted
+        sequence:
+          - action: fan.set_percentage
+            metadata: {}
+            data:
+              percentage: 100
+            target:
+              entity_id: fan.fan_speed_3dp_enclosure_3dp_enclosure_filter_fan
+      - conditions:
+          - condition: trigger
+            id:
+              - enclosure-air-low-moderate
+        sequence:
+          - choose:
+              - conditions:
+                  - condition: numeric_state
+                    entity_id: fan.fan_speed_3dp_enclosure_3dp_enclosure_filter_fan
+                    attribute: percentage
+                    above: 29
+                sequence:
+                  - action: fan.decrease_speed
+                    metadata: {}
+                    target:
+                      entity_id: fan.fan_speed_3dp_enclosure_3dp_enclosure_filter_fan
+                    data:
+                      percentage_step: 10
+            default:
+              - action: fan.set_percentage
+                metadata: {}
+                target:
+                  entity_id: fan.fan_speed_3dp_enclosure_3dp_enclosure_filter_fan
+                data:
+                  percentage: 20
+      - conditions:
+          - condition: trigger
+            id:
+              - enclosure-air-high-moderate
+        sequence:
+          - choose:
+              - conditions:
+                  - condition: numeric_state
+                    entity_id: fan.fan_speed_3dp_enclosure_3dp_enclosure_filter_fan
+                    attribute: percentage
+                    below: 79
+                sequence:
+                  - action: fan.increase_speed
+                    metadata: {}
+                    target:
+                      entity_id: fan.fan_speed_3dp_enclosure_3dp_enclosure_filter_fan
+                    data:
+                      percentage_step: 10
+            default:
+              - action: fan.set_percentage
+                metadata: {}
+                target:
+                  entity_id: fan.fan_speed_3dp_enclosure_3dp_enclosure_filter_fan
+                data:
+                  percentage: 80
+      - conditions:
+          - condition: trigger
+            id:
+              - enclosure-air-clean
+        sequence:
+          - action: fan.decrease_speed
+            metadata: {}
+            data:
+              percentage_step: 10
+            target:
+              entity_id: fan.fan_speed_3dp_enclosure_3dp_enclosure_filter_fan
+mode: single

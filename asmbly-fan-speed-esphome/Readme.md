@@ -58,3 +58,9 @@ wifi.
 At this point, if all has gone well, you should be able to connect to
 Home Assistant and see that a new Esphome device is available. Add it
 and enjoy your control.
+
+# Automation
+
+We have an automation set up in Home Assistant to change the fan speed based on the data from the air quality sensor: [automation.yaml](automation.yaml)
+
+You can see graphs showing it on the Resin tab of the 3D Printing dashboard in HA
